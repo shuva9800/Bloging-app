@@ -4,13 +4,16 @@ const router =express.Router();
 
 //import controllers
 
-const {dummyPage} =require('../controllers/dummy');
-const {fetchData}= require('../controllers/fetchData')
+const {commentsController} = require('../controllers/commentsController');
+const {postController,getAllpost}= require('../controllers/postController');
+const {likepost,notLike} =require('../controllers/likeController');
+
 
 //map path with controller
-router.get("/dummy", dummyPage);
-router.get('/posts', fetchData);
-
-
+router.post('/comments/create', commentsController);
+router.post('/posts/create',postController);
+router.get('/posts', getAllpost);
+router.post('/likes/like',likepost);
+router.post('/likes/unlike',notLike);
 //export routes
 module.exports = router;

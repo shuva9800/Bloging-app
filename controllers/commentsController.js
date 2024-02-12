@@ -1,22 +1,26 @@
 const comment =require('../model/commentMode');
-const post = require('../model/postModel');
+const Post = require('../model/postModel');
 
 
 exports.commentsController = async (req,res)=>{
     try{
-       const {user, body,post} = req.body;
+       const {post,user, body} = req.body;
        // 1st way to insert dat into db
-        // const values =await comment.create({user, body,post});
+        const values =await comment.create({user, body,post});
 
         // 2nd way to insert data ino db
         // at first create object 
-        const commentvalue= new commentvalue({user, body,post});
-        const value= await commentvalue.save();
+        // const commentvalue= new commentvalue({post,user, body});
+        // const values= await commentvalue.save();
+        // find the post by ID and insert it to the post's comments array
+        const updatedPost= await Post.findByIdAndUpdate(post, {$push: {comments:values._id}},{new:true})
+               .populate("comments")  // populate the comments array with comments documents
+               .exec();
 
 
         res.status(200).json({
             success: true,
-            data:values,
+            data:updatedPost,
             message: "comment inserted into the DB successfully"
         })
 

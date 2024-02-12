@@ -6,7 +6,7 @@ const likeSchema = new mongoose.Schema({
         ref:"Post",
     },
     user:{
-        type:string,
+        type:"string",
         required:true,
     },
 });

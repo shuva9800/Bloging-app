@@ -14,7 +14,7 @@ app.listen(port, ()=>{
 const taskroute = require('./routes/task');
 
 
-//mount the todo API routes
+//mount to the API routes
 app.use("/api/v1", taskroute);
 
 //connection DB

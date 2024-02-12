@@ -2,16 +2,16 @@ const mongoose =require('mongoose');
 
 const postSchema = new mongoose.Schema({
     user:{
-        type: String,
+        type: "String",
         required: true,
-        maxLength: 100,
+        maxLength: 100, 
     },
     title:{
-        type: String,
+        type: "String",
         required: true
     },
     body:{
-        type: String,
+        type: "String",
         required: true
     },
     likes:[{
